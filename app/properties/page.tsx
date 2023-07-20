@@ -17,7 +17,7 @@ const PropertiesPage = async () => {
     />
   }
 
-  const listings = await getListings({ userID: currentUser.id });
+  const listings = await getListings({ userId: currentUser.id });
 
   if (listings.length === 0) {
     return (
@@ -40,4 +40,4 @@ const PropertiesPage = async () => {
   );
 }
  
-export default PropertiesPage;  
+export default PropertiesPage;
