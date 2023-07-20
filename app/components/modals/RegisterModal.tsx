@@ -40,7 +40,9 @@ const RegisterModal = () => {
 
   axios.post('/api/register', data)
     .then(() => {
+      toast.success('Success!')
       registerModal.onClose();
+      loginModal.onOpen();
     })
     .catch((error) => {
       toast.error('Something went wrong!');
@@ -61,7 +63,7 @@ const bodyContent = (
       subtitle="Create an Account!"
      />
 
-     <Input 
+     <Input
       id="email"
       label="Email"
       disabled={isLoading}
@@ -69,7 +71,7 @@ const bodyContent = (
       errors={errors}
       required
      />
-     <Input 
+     <Input
       id="name"
       label="Name"
       disabled={isLoading}
@@ -77,7 +79,7 @@ const bodyContent = (
       errors={errors}
       required
      />
-     <Input 
+     <Input
       id="password"
       type="password"
       label="Password"
@@ -92,14 +94,14 @@ const bodyContent = (
 const footerContent = (
   <div className="flex flex-col gap-4 mt-3">
     <hr />
-    <Button 
+    <Button
       outline
       label="Continue with Google"
       icon={FcGoogle}
       onClick={() => signIn('google')}
       
     />
-    <Button 
+    <Button
       outline
       label="Continue with Github"
       icon={AiFillGithub}

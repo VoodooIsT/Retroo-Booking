@@ -1,7 +1,5 @@
 'use client'
 import { useCallback, useEffect, useState } from "react";
-import { disposeEmitNodes } from "typescript";
-import { transferableAbortController } from "util";
 import {IoMdClose} from 'react-icons/io'
 import Button from "../Button";
 interface ModalProps {
@@ -33,7 +31,7 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
     const[showModal, setShowModel] = useState(false);
     useEffect(() => {
-        setShowModel(isOpen);
+        setShowModel(isOpen ? isOpen : false);
     },[isOpen]);
 
     const handelClose = useCallback(() => {
