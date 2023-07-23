@@ -1,4 +1,4 @@
-import Prismadb from "@/app/libs/Prismadb";
+import prisma from "@/app/libs/Prismadb";
 
 interface IParams {
   listingId?: string;
@@ -26,7 +26,7 @@ export default async function getReservations(
       query.listing = { userId: authorId };
     }
 
-    const reservations = await Prismadb.reservation.findMany({
+    const reservations = await prisma.reservation.findMany({
       where: query,
       include: {
         listing: true

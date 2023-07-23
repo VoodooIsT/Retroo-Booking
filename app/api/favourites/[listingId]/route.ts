@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 import getCurrentuser from "@/app/actions/getCurrentUser";
-import Prismadb from '@/app/libs/Prismadb'
+import prisma from '@/app/libs/Prismadb'
 import { get } from "http";
 import { use } from "react";
 
@@ -30,7 +30,7 @@ export async function POST(
 
     favouriteIds.push(listingId);
 
-    const user = await Prismadb.user.update({
+    const user = await prisma.user.update({
         where: {
             id: currentUser.id
         },
@@ -63,7 +63,7 @@ export async function DELETE(
 
     favouriteIds = favouriteIds.filter((id) => id!=listingId);
 
-    const user = await Prismadb.user.update({
+    const user = await prisma.user.update({
         where: {
             id: currentUser.id,
         },
